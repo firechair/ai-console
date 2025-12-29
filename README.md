@@ -73,7 +73,7 @@ See [Configuration](#optional-enhancements) below to enable optional features.
 - **Security**: CORS, rate limiting, request ID tracking, structured logging
 
 ## Quick Demo
-<video src="https://github.com/firechair/ai-console/raw/main/docs/media/demo.mov" autoplay loop muted playsinline width="800"></video>
+<video src="docs/media/demo.mov" controls autoplay loop muted playsinline width="100%"></video>
 
 **New Workflow Demonstrated:**
 1. **Upload**: Uploading a CV/Resume PDF.
