@@ -1,4 +1,4 @@
-# AI Knowledge Console
+# AI Console
 
 [![License: GPL v3 + Non-Commercial](https://img.shields.io/badge/License-GPL%20v3%20%2B%20Non--Commercial-blue.svg)](LICENSE)
 
@@ -49,14 +49,14 @@ See [Configuration](#optional-enhancements) below to enable optional features.
 - **Smart RAG Chat**: REST and WebSocket streaming with conversation memory
 - **Conversation Management**: List, rename, delete, bulk operations with responsive UI
 
-### Advanced Settings (NEW ⭐)
+### Advanced Settings
 - **Unified Settings Panel**: Centralized configuration for all system settings
 - **LLM Provider Selection**: Switch between local and cloud providers in real-time
 - **Model Management**: Download GGUF models from HuggingFace with progress tracking
 - **API Key Manager**: Secure storage and validation of service credentials
 - **Cloud Provider Support**: OpenRouter (200+ models), OpenAI, custom endpoints
 
-### File Generation (NEW ⭐)
+### File Generation
 - **Multi-Format Export**: Generate PDF, Markdown, or HTML from conversations
 - **Direct Download**: One-click download from chat interface
 - **Absolute URLs**: Docker-compatible URL generation for file access
@@ -73,7 +73,7 @@ See [Configuration](#optional-enhancements) below to enable optional features.
 - **Security**: CORS, rate limiting, request ID tracking, structured logging
 
 ## Quick Demo
-<video src="docs/media/Registrazione%20schermo%202025-12-26%20alle%2011.26.52.mov" autoplay loop muted playsinline width="800"></video>
+<video src="https://github.com/firechair/ai-console/raw/main/docs/media/demo.mov" autoplay loop muted playsinline width="800"></video>
 
 **New Workflow Demonstrated:**
 1. **Upload**: Uploading a CV/Resume PDF.
@@ -83,7 +83,7 @@ See [Configuration](#optional-enhancements) below to enable optional features.
 
 ## 🎉 What's New (v2.0 - December 2025)
 
-This is a major enhancement of the AI Knowledge Console with new enterprise features:
+This is a major enhancement of the AI Console with new enterprise features:
 
 - **🎛️ Advanced Settings Management**: Unified settings UI for configuring LLM providers, API keys, and models
 - **☁️ Multi-Provider LLM Support**: Seamlessly switch between local (llama.cpp), OpenRouter, OpenAI, and custom endpoints
@@ -92,14 +92,6 @@ This is a major enhancement of the AI Knowledge Console with new enterprise feat
 - **🏗️ Enhanced Architecture**: Modular component structure with clean separation of concerns
 - **⚙️ Settings Persistence**: User preferences saved in settings.json with automatic migration
 
-See [CHANGELOG.md](CHANGELOG.md) for complete version history.
-
-## Architecture
-
-> 📖 **Complete Documentation**:
-> - [Architecture Guide](docs/ARCHITECTURE.md) - Detailed system design and Docker optimization
-> - [Developer Guide](docs/DEVELOPER_GUIDE.md) - Complete API reference and development setup
-> - [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute to the project
 
 ### Quick Overview
 
@@ -434,7 +426,7 @@ docker compose -f docker-compose.ghcr.yml up -d
 Systemd example:
 ```ini
 [Unit]
-Description=AI Knowledge Console
+Description=AI Console
 After=network.target docker.service
 Requires=docker.service
 

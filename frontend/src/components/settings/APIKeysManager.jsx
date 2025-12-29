@@ -49,7 +49,7 @@ export default function APIKeysManager() {
 
     // Filter out empty values
     const keysToSave = Object.fromEntries(
-      Object.entries(formData).filter(([_, value]) => value && value.trim())
+      Object.entries(formData).filter(([, value]) => value && value.trim())
     );
 
     if (Object.keys(keysToSave).length === 0) {

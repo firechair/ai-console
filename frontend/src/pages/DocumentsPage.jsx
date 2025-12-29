@@ -4,7 +4,9 @@ import { uploadDocument, listDocuments, deleteDocument } from '../utils/api';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Upload, FileText, Trash2, Loader2, CheckCircle, X, File } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '../utils/cn';
 
 export default function DocumentsPage() {
     const [uploading, setUploading] = useState(false);

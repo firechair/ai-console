@@ -42,7 +42,7 @@ export function FileDownloadCard({ filename, title, content, format }) {
                 document.body.removeChild(link);
                 URL.revokeObjectURL(objectUrl);
                 setStatus('completed');
-            } catch (e) {
+            } catch {
                 // Fallback to direct link if blob fails
                 const link = document.createElement('a');
                 link.href = dlUrl;

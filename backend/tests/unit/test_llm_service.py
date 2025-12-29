@@ -45,14 +45,22 @@ class TestLLMService:
             mock_settings.return_value.llm_base_url = "https://openrouter.ai/api/v1"
             mock_settings.return_value.openrouter_api_key = "test-key"
             mock_settings.return_value.app_base_url = "http://localhost:5173"
-            mock_settings.return_value.openrouter_temperature = 0.7
-            mock_settings.return_value.openrouter_top_p = 1.0
-            mock_settings.return_value.openrouter_frequency_penalty = 0.0
-            mock_settings.return_value.openrouter_presence_penalty = 0.0
-            mock_settings.return_value.openrouter_repetition_penalty = 1.0
-            mock_settings.return_value.openrouter_max_tokens = 1024
+            
+            # Mock ConfigService
+            mock_config_service = Mock()
+            mock_config_service.get_llm_config.return_value = {
+                "provider": "openrouter",
+                "api_key": "test-key",
+                "model": "meta-llama/llama-3.1-8b-instruct:free",
+                "temperature": 0.7,
+                "top_p": 1.0,
+                "frequency_penalty": 0.0,
+                "presence_penalty": 0.0,
+                "repetition_penalty": 1.0,
+                "max_tokens": 1024
+            }
 
-            service = LLMService()
+            service = LLMService(config_service=mock_config_service)
 
             mock_response = Mock()
             mock_response.status_code = 200
@@ -78,7 +86,9 @@ class TestLLMService:
                 mock_client.post.assert_called_once()
                 call_args = mock_client.post.call_args
                 assert call_args[0][0] == "https://openrouter.ai/api/v1/chat/completions"
+                # This should now pass because mock_config_service returns api_key
                 assert "Authorization" in call_args[1]["headers"]
+                assert call_args[1]["headers"]["Authorization"] == "Bearer test-key"
 
     async def test_generate_llamacpp(self):
         """Test non-streaming generation with llama.cpp."""
@@ -115,14 +125,22 @@ class TestLLMService:
             mock_settings.return_value.llm_base_url = "https://openrouter.ai/api/v1"
             mock_settings.return_value.openrouter_api_key = "test-key"
             mock_settings.return_value.app_base_url = "http://localhost:5173"
-            mock_settings.return_value.openrouter_temperature = 0.7
-            mock_settings.return_value.openrouter_top_p = 1.0
-            mock_settings.return_value.openrouter_frequency_penalty = 0.0
-            mock_settings.return_value.openrouter_presence_penalty = 0.0
-            mock_settings.return_value.openrouter_repetition_penalty = 1.0
-            mock_settings.return_value.openrouter_max_tokens = 1024
+            
+            # Mock ConfigService
+            mock_config_service = Mock()
+            mock_config_service.get_llm_config.return_value = {
+                "provider": "openrouter",
+                "api_key": "test-key",
+                "model": "meta-llama/llama-3.1-8b-instruct:free",
+                "temperature": 0.7,
+                "top_p": 1.0,
+                "frequency_penalty": 0.0,
+                "presence_penalty": 0.0,
+                "repetition_penalty": 1.0,
+                "max_tokens": 1024
+            }
 
-            service = LLMService()
+            service = LLMService(config_service=mock_config_service)
 
             # Mock streaming response
             async def mock_aiter_lines():

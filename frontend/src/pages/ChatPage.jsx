@@ -23,7 +23,7 @@ export default function ChatPage() {
     const [selectedDocuments, setSelectedDocuments] = useState([]);
 
     // Default tool parameters
-    const [toolParams, setToolParams] = useState({
+    const [toolParams] = useState({
         github_repo: 'facebook/react',
         crypto_symbol: 'bitcoin',
         weather_city: 'London',
@@ -42,6 +42,7 @@ export default function ChatPage() {
         if (urlConversationId) {
             // Save to localStorage so we can restore it when navigating back
             localStorage.setItem('lastConversationId', urlConversationId);
+            // eslint-disable-next-line
             setIsLoading(true);
             setError(null);
 
@@ -82,7 +83,7 @@ export default function ChatPage() {
 
                 // Enable all properly configured and globally enabled connectors by default
                 const globallyEnabled = Object.entries(connectors)
-                    .filter(([_, status]) => status.enabled && status.configured)
+                    .filter(([, status]) => status.enabled && status.configured)
                     .map(([name]) => name);
 
                 setEnabledTools(globallyEnabled);
@@ -198,7 +199,7 @@ export default function ChatPage() {
     const handleToolToggle = (toolName, isConfigured) => {
         // Allow toggling if it's configured OR it's a public tool (crypto/hackernews)
         const isPublic = ['crypto', 'hackernews'].includes(toolName);
-        
+
         if (!isConfigured && !isPublic) {
             alert(`Please configure the ${toolName} connector in the Connectors page to use this tool.`);
             return;
@@ -233,14 +234,14 @@ export default function ChatPage() {
                     )}
                     {!error && messages.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-[rgb(var(--text-secondary))] opacity-80">
-                            <img 
-                                src="/logo-light.jpg" 
-                                alt="Logo" 
+                            <img
+                                src="/logo-light.jpg"
+                                alt="Logo"
                                 className="w-24 h-24 object-contain mb-6 block dark:hidden"
                             />
-                            <img 
-                                src="/logo-dark.jpg" 
-                                alt="Logo" 
+                            <img
+                                src="/logo-dark.jpg"
+                                alt="Logo"
                                 className="w-24 h-24 object-contain mb-6 hidden dark:block"
                             />
                             <p className="text-lg font-medium">How can I help you today?</p>
@@ -294,7 +295,7 @@ export default function ChatPage() {
                                                 />
                                             </div>
                                         </div>
-                                        
+
                                         {useDocuments && (
                                             <div className="border border-[rgb(var(--border-color))] rounded-lg overflow-hidden">
                                                 <div className="bg-[rgb(var(--bg-app))]/50 p-2 text-xs font-medium text-[rgb(var(--text-secondary))] border-b border-[rgb(var(--border-color))]">
@@ -307,13 +308,13 @@ export default function ChatPage() {
                                                         </div>
                                                     ) : (
                                                         availableDocuments.map(doc => (
-                                                            <div 
-                                                                key={doc} 
+                                                            <div
+                                                                key={doc}
                                                                 onClick={() => handleDocumentToggle(doc)}
                                                                 className={`
                                                                     flex items-center gap-2 p-2 rounded cursor-pointer text-sm transition-colors
-                                                                    ${selectedDocuments.includes(doc) 
-                                                                        ? 'bg-[rgb(var(--accent-primary))]/10 text-[rgb(var(--accent-primary))]' 
+                                                                    ${selectedDocuments.includes(doc)
+                                                                        ? 'bg-[rgb(var(--accent-primary))]/10 text-[rgb(var(--accent-primary))]'
                                                                         : 'hover:bg-[rgb(var(--text-secondary))]/10'
                                                                     }
                                                                 `}
@@ -347,13 +348,13 @@ export default function ChatPage() {
                                                 </div>
                                             ) : (
                                                 Object.entries(availableConnectors).map(([name, status]) => (
-                                                    <div 
-                                                        key={name} 
+                                                    <div
+                                                        key={name}
                                                         onClick={() => handleToolToggle(name, status.configured)}
                                                         className={`
                                                             flex items-center justify-between p-3 border-b border-[rgb(var(--border-color))] last:border-0 cursor-pointer transition-colors
-                                                            ${enabledTools.includes(name) 
-                                                                ? 'bg-[rgb(var(--accent-primary))]/5' 
+                                                            ${enabledTools.includes(name)
+                                                                ? 'bg-[rgb(var(--accent-primary))]/5'
                                                                 : 'hover:bg-[rgb(var(--text-secondary))]/5'
                                                             }
                                                             ${(!status.configured && !['crypto', 'hackernews'].includes(name)) ? 'opacity-60 grayscale' : ''}

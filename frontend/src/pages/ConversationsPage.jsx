@@ -6,6 +6,7 @@ import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Trash2, Plus, MessageSquare, Clock, Edit2, Archive } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ConversationsPage() {

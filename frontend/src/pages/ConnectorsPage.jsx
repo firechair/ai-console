@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { listConnectors, configureConnector, toggleConnector, API_BASE } from '../utils/api';
 import { Card, CardHeader, CardTitle, CardDescription } from '../components/ui/Card';
@@ -57,7 +57,7 @@ export default function ConnectorsPage() {
         const apiBase = API_BASE || window.location.origin.replace('5173', '8000');
         const cleanBase = apiBase.replace(/\/$/, '') + (apiBase.includes('/api') ? '' : '/api');
 
-        window.location.href = `${cleanBase}/auth/${provider}/login?state=${state}`;
+        window.location.assign(`${cleanBase}/auth/${provider}/login?state=${state}`);
     };
 
     if (isLoading) {

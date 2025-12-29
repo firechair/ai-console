@@ -29,20 +29,23 @@ frontend/dist/
 .env.local
 
 # Data / local artifacts
-vectorstore/
+vectorstore/*
+!vectorstore/.gitkeep
 *.sqlite3
 *.db
 conversations.db
 
 # User settings and generated files
 backend/settings.json
-backend/static/generated/
+backend/static/generated/*
+!backend/static/generated/.gitkeep
 
 # Scripts and utilities (not needed by end users)
 scripts/
 
 # Model files (users download their own)
-models/
+models/*
+!models/.gitkeep
 
 # Test documents (test fixtures)
 test_documents/

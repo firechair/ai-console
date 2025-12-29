@@ -16,3 +16,4 @@ reportlab
 markdown
 pypdf
 python-docx
+pytest-asyncio

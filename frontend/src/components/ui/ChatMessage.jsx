@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
@@ -6,7 +7,7 @@ import { cn } from '../../utils/cn';
 
 import { FileDownloadCard } from './FileDownloadCard';
 
-export const ChatMessage = ({ role, content, sources, isStreaming }) => {
+export const ChatMessage = ({ role, content, sources }) => {
     const isUser = role === 'user';
 
     // Parse for file artifacts
